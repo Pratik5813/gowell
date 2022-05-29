@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main"
     <div class="container-fluid banner"
         style="background-image: url(<?php echo get_template_directory_uri().'/screenshot.jpg'?>)">
         <div class="text-stuff">
