@@ -154,9 +154,16 @@ function gowell_post_types(){
 	));
 	register_post_type('transportation',array(
 		'public'=>true,
+		'supports'=>array('title','editor','thumbnail','excerpt'),
+		'rewrite'=>array('slug'=>'transportation'),
 		'labels'=>[
-			'name'=>'Transportation'
+			'name'=>'Transportation',
+			'add_new_item'=>'Add New Transportation',
+			'edit_item'=>'Edit Transportation',
+			'all_items'=>'All Transportation'
 		],
+		'publicly_queryable'=>true,
+		'has_archive'=>true,
 		'menu_icon'=>'dashicons-car'
 		
 	));

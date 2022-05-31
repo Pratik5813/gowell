@@ -113,8 +113,7 @@ get_header();
     <div class="container-fluid top-padder">
         <div class="container">
             <div class="row">
-                <div class="section-title center-block text-center"> <span
-                        class="heading-style">Best</span>
+                <div class="section-title center-block text-center"> <span class="heading-style">Best</span>
                     <h1>Popular Packages</h1>
                     <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
                 </div>
@@ -159,6 +158,75 @@ get_header();
                                         <h4>Price</h4>
                                         <h2 class="fw-bold">$<?php echo get_field('price')?></h2>
                                     </div>
+                                </div>
+                            </div>
+                            <a href="<?php echo esc_url(get_the_permalink());?>"
+                                class="card-footer text-center custom-card-footer">
+                                <span>Book Now</span></a>
+                        </div>
+
+                    </div>
+                    <?php 
+					endwhile;
+					endif;
+					wp_reset_postdata();
+					?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+	$transportation= new WP_query(array(
+		'posts_per_page'=>'10',
+		'post_type'=>'transportation'
+	));?>
+    <div class="container-fluid top-padder">
+        <div class="container">
+            <div class="row">
+                <div class="section-title center-block text-center"> <span class="heading-style">Our</span>
+                    <h1>Transportation Facilities</h1>
+                    <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+                </div>
+                <div class="owl-carousel owl-theme">
+                    <?php if($transportation->have_posts()):
+					while($transportation->have_posts()):
+						$transportation->the_post();
+						 ?>
+                    <div class="item">
+                        <div class="card">
+                            <?php
+									 if ( has_post_thumbnail() ) {
+									 echo get_the_post_thumbnail(
+										 get_the_ID(),
+										 'featured-thumbnail',
+										 [
+											 'sizes' => '(max-width: 350px) 350px, 233px',
+											 'class' => 'w-100',
+										 ]
+									 );
+									 } else {
+									 ?>
+                            <img src="https://via.placeholder.com/510x340" class="w-100" alt="Card image cap">
+                            <?php
+									 }
+									 ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?php the_title(); ?></h5>
+                                <p class="card-text">
+                                    <?php $post_content= the_content(); wp_trim_words($post_content,10); ?></p>
+                                <div>
+                                    <?php
+                                        $facilities = get_field('facilities');
+                                        if( $facilities ): ?>
+                                    <ul>
+                                        <?php foreach( $facilities as $facility ): ?>
+                                        <li><?php echo $facility; ?></li>
+                                        <li><?php echo $facility; ?></li>
+                                        <li><?php echo $facility; ?></li>
+                                        <li><?php echo $facility; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <a href="<?php echo esc_url(get_the_permalink());?>"
